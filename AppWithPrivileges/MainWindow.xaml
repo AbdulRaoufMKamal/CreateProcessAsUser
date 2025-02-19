@@ -1,0 +1,15 @@
+﻿<Window x:Class="AppWithPrivileges.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppWithPrivileges"
+        mc:Ignorable="d"
+        Title="App" Height="450" Width="800">
+    <Grid>
+        <Label FontSize="20"
+               FontFamily="Verdana" VerticalAlignment="Center" HorizontalAlignment="Center">
+            This is an App with privliges
+        </Label>
+    </Grid>
+</Window>

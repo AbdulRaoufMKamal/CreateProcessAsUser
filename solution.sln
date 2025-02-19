@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppWithPrivileges", "AppWithPrivileges\AppWithPrivileges.csproj", "{FB499E9E-A4E8-4201-9FD9-E70A0C80A9DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{75EE3B51-5A96-473C-9E68-C36B728A6E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75EE3B51-5A96-473C-9E68-C36B728A6E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75EE3B51-5A96-473C-9E68-C36B728A6E2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB499E9E-A4E8-4201-9FD9-E70A0C80A9DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB499E9E-A4E8-4201-9FD9-E70A0C80A9DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB499E9E-A4E8-4201-9FD9-E70A0C80A9DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB499E9E-A4E8-4201-9FD9-E70A0C80A9DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
