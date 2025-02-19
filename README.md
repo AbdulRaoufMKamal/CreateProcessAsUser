@@ -37,3 +37,5 @@ Similarly, the `DemoModernService` project uses .NET 8.0, and a build will copy 
 
 For either version, CD to the bin directory and run `createService` to install and start the service. It will launch `calc.exe` as soon as it starts. After that, run `deleteService` to stop and uninstall the service.
 
+## Major Addition
+Now you can run apps that require administrative privileges using the SetTokenInformation which can be used to update the session Id in which the app runs and hence show the app UI, note that you need to set the workDir parameter to the working directory which contains the app itself. See [this stack overflow answer](https://stackoverflow.com/questions/33212984/createprocessasuser-with-elevated-privileges)
