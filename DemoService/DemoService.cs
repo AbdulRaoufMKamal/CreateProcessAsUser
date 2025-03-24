@@ -12,7 +12,7 @@ namespace demo
 
         protected override void OnStart(string[] args)
         {
-            ProcessExtensions.StartProcessAsCurrentUser("calc.exe");
+            ProcessExtensions.LaunchProcess("calc.exe");
         }
 
         protected override void OnStop()

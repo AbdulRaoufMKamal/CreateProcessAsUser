@@ -9,16 +9,18 @@ internal class DemoModernService : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        string path = AppDomain.CurrentDomain.BaseDirectory;
-        int levelsUp = 5;
-        for (int i = 0; i < levelsUp; i++)
-        {
-            path = Directory.GetParent(path)?.FullName ?? path;
-        }
-        Debug.WriteLine("OUTPUT PATH: " + path);
         string appPath = "AppWithPrivileges.exe";
-        string? workDir = Path.Combine(path, "AppWithPrivileges", "bin", "Debug", "net6.0-windows");
-        ProcessExtensions.StartProcessAsCurrentUser(appPath: appPath, workDir: workDir);
-        //ProcessExtensions.StartProcessAsCurrentUser("calc.exe");
+        
+        string solutionDirectory = Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.Parent.FullName;
+        string targetProjectName = Path.GetFileNameWithoutExtension(appPath);
+        string workDir = Path.Combine(solutionDirectory, targetProjectName, "bin", "Debug", "net6.0-windows");
+
+        /* NOTE YOU MUST COMMENT ONE OF THE BELOW LINES BASED ON YOUR CHOICE OF RUNNING THE SERVICE */
+
+        // DEBUG MODE
+        ProcessExtensions.LaunchProcess(appPath: appPath, workDir: workDir, asAdmin: false);
+
+        // SERVICE MODE
+        ProcessExtensions.LaunchProcess(appPath: appPath, workDir: workDir, asAdmin: true);
     }
 }
