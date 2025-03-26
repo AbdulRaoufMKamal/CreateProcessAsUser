@@ -242,7 +242,7 @@ namespace murrayju.ProcessExtensions
             return bResult;
         }
 
-        public static bool LaunchProcess(string appPath, string cmdLine = null, string workDir = null, bool visible = true, bool asAdmin = false)
+        public static bool LaunchProcess(string appPath, string cmdLine = null, string workDir = null, bool visible = true)
         {
             var hUserToken = WindowsIdentity.GetCurrent().Token;
             var startInfo = new STARTUPINFO();
@@ -250,19 +250,21 @@ namespace murrayju.ProcessExtensions
             var pEnv = IntPtr.Zero;
             int iResultOfCreateProcessAsUser;
 
+            bool systemAccount = WindowsIdentity.GetCurrent().IsSystem;
+
 
             startInfo.cb = Marshal.SizeOf(typeof(STARTUPINFO));
 
             try
             {
                 //workDir = Path.GetDirectoryName(appPath);
-                if (!GetSessionUserToken(ref hUserToken, asAdmin))
+                if (!GetSessionUserToken(ref hUserToken, systemAccount))
                 {
                     throw new ProcessCreationException("StartProcessAsCurrentUser: GetSessionUserToken failed.");
                 }
 
                 int sessionId = (int)activeSessionId;
-                if (asAdmin && !SetTokenInformation(executionToken, TokenInformationClass.TokenSessionId, ref sessionId, sizeof(int)))
+                if (systemAccount && !SetTokenInformation(executionToken, TokenInformationClass.TokenSessionId, ref sessionId, sizeof(int)))
                 {
                     throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error(), "Failed to set token information.");
                 }

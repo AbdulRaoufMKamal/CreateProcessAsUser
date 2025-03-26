@@ -15,12 +15,6 @@ internal class DemoModernService : BackgroundService
         string targetProjectName = Path.GetFileNameWithoutExtension(appPath);
         string workDir = Path.Combine(solutionDirectory, targetProjectName, "bin", "Debug", "net6.0-windows");
 
-        /* NOTE YOU MUST COMMENT ONE OF THE BELOW LINES BASED ON YOUR CHOICE OF RUNNING THE SERVICE */
-
-        // DEBUG MODE
-        ProcessExtensions.LaunchProcess(appPath: appPath, workDir: workDir, asAdmin: false);
-
-        // SERVICE MODE
-        ProcessExtensions.LaunchProcess(appPath: appPath, workDir: workDir, asAdmin: true);
+        ProcessExtensions.LaunchProcess(appPath: appPath, workDir: workDir);
     }
 }
